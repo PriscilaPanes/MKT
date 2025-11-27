@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller de Marketing Estratégico - AIEP</title>
+    <title>Marketing Estratégico - Web App Educativa</title>
     <style>
+        /* Paleta de Colores y Variables (Actualizada) */
         :root {
-            --primary: #003366; /* Azul Institucional */
-            --accent: #E63946;  /* Rojo vibrante */
-            --light: #F1FAEE;
-            --dark: #1D3557;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --primary: #1A237E; /* Deep Indigo Blue */
+            --accent: #FF6F00;  /* Vibrant Orange */
+            --light: #F5F5F5;   /* Fondo claro */
+            --dark: #212121;    /* Texto principal */
+            --card-bg: #FFFFFF;
+            --shadow: 0 6px 15px rgba(0,0,0,0.15); /* Sombra mejorada */
         }
 
         * {
@@ -19,6 +20,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Solución para desborde en palabras muy largas */
+            word-wrap: break-word; 
         }
 
         body {
@@ -33,16 +36,17 @@
             color: white;
             padding: 2rem;
             text-align: center;
-            border-bottom: 5px solid var(--accent);
+            border-bottom: 6px solid var(--accent);
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             opacity: 0.9;
         }
 
@@ -63,18 +67,19 @@
             color: white;
             text-decoration: none;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background 0.3s;
+            border-radius: 6px;
+            transition: background 0.3s, transform 0.2s;
             font-weight: bold;
         }
 
         nav a:hover {
             background: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -82,152 +87,56 @@
         /* Section Styling */
         section {
             margin-bottom: 4rem;
-            scroll-margin-top: 100px;
+            scroll-margin-top: 80px; /* Ajuste para el sticky nav */
         }
 
         h2 {
             color: var(--primary);
-            border-left: 5px solid var(--accent);
-            padding-left: 1rem;
+            border-left: 6px solid var(--accent);
+            padding-left: 1.2rem;
             margin-bottom: 1.5rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
 
-        /* Grid Layout for Concepts */
+        /* Grid Layout for Concepts (Optimized for Card Content) */
         .grid-concepts {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
         .card {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
+            padding: 1.8rem;
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            border-top: 3px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+            min-height: 180px; /* Asegura un tamaño mínimo */
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .card h3 {
             color: var(--accent);
             margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
 
-        /* Visual Mind Map (CSS Only) */
-        .mind-map-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
+        /* Mapas Mentales y Flashcards (Misceláneo) */
+        .mind-map-container, .flashcard-container {
+            /* estilos de contenedor */
         }
-
-        .mm-node {
-            background: var(--primary);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            position: relative;
-            text-align: center;
-            max-width: 300px;
-        }
-
-        .mm-branches {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .mm-leaf {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--dark);
-            padding: 10px 15px;
-            border-radius: 8px;
-            width: 150px;
-            text-align: center;
-            font-size: 0.9rem;
-            position: relative;
-        }
-
-        /* Connectors logic simplified for responsiveness */
-        .mm-branches::before {
-            content: '';
-            width: 2px;
-            height: 20px;
-            background: var(--primary);
-            position: absolute;
-            margin-top: -20px;
-        }
-
-        /* Flashcards Section */
-        .flashcard-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .flashcard {
-            background-color: transparent;
-            width: 300px;
-            height: 200px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .flashcard-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            box-shadow: var(--shadow);
-            border-radius: 10px;
-        }
-
-        .flashcard.flipped .flashcard-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flashcard-front, .flashcard-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border-radius: 10px;
-            flex-direction: column;
-        }
-
+        
+        /* Estilos de Flashcards */
         .flashcard-front {
             background-color: var(--primary);
-            color: white;
         }
-
         .flashcard-back {
             background-color: var(--accent);
-            color: white;
-            transform: rotateY(180deg);
-        }
-
-        .instruction {
-            text-align: center;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #666;
         }
 
         /* Footer */
@@ -240,143 +149,185 @@
         }
 
         /* Responsive Tweaks */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            nav { flex-direction: column; text-align: center; }
-            .mm-branches { flex-direction: column; align-items: center; }
-            .mm-branches::before { display: none; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            nav { justify-content: space-around; }
+            .grid-concepts { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Taller de Marketing</h1>
-    <p>Resumen de Conceptos Claves, Estrategias y Herramientas</p>
-    <small>Basado en material docente AIEP</small>
+    <h1>Marketing Estratégico: Conceptos Fundamentales</h1>
+    <p>Guía de estudio basada en material docente AIEP</p>
 </header>
 
 <nav>
     <a href="#fundamentos">Fundamentos</a>
     <a href="#estrategia">Mkt Estratégico vs Operativo</a>
-    <a href="#consumidor">El Consumidor</a>
-    <a href="#herramientas">Herramientas (BCG/Porter)</a>
+    <a href="#entornos">Análisis del Entorno</a>
+    <a href="#mix">4P vs 4C</a>
+    <a href="#compra">Decisión de Compra</a>
     <a href="#flashcards">¡Ponte a Prueba!</a>
 </nav>
 
 <div class="container">
 
     <section id="fundamentos">
-        <h2>1. Fundamentos del Marketing</h2>
+        <h2>1. Fundamentos Clave y Conceptos Centrales</h2>
         <div class="grid-concepts">
             <div class="card">
-                <h3>¿Qué es el Marketing?</h3>
-                <p>Es un proceso social y administrativo. Según Kotler, es crear valor para los clientes y establecer relaciones sólidas para obtener valor de ellos a cambio. No es solo vender o publicidad.</p>
-            </div>
-            <div class="card">
-                <h3>Conceptos Centrales</h3>
+                <h3>Necesidades, Deseos y Demandas</h3>
                 <ul>
-                    <li><strong>Necesidad:</strong> Estado de carencia percibida (ej. sed).</li>
-                    <li><strong>Deseo:</strong> La forma que adopta la necesidad según cultura y personalidad.</li>
-                    <li><strong>Demanda:</strong> Deseos respaldados por poder de compra.</li>
+                    <li><strong>Necesidad:</strong> Estado de carencia percibida, son infinitas y representan un vacío fundamental (ej. alimentación, seguridad).</li>
+                    <li><strong>Deseo:</strong> El impulso que genera la necesidad, es querer algo específico que no necesariamente se necesita. Están moldeados por la cultura y la personalidad.</li>
+                    <li><strong>Demanda:</strong> Ocurre cuando el deseo está respaldado por el **poder de compra** (dinero). Es la cantidad de un bien que el consumidor está dispuesto a adquirir.</li>
                 </ul>
             </div>
             <div class="card">
-                <h3>Mercados Claves</h3>
-                <p>Clasificación según intercambio:</p>
-                <ul>
-                    <li><strong>B2C:</strong> Empresa a Consumidor (ej. Líder).</li>
-                    <li><strong>B2B:</strong> Empresa a Empresa.</li>
-                    <li><strong>B2G:</strong> Empresa a Gobierno (ChileCompra).</li>
-                </ul>
+                <h3>Intercambio y Mercados</h3>
+                <p><strong>Intercambio:</strong> Es el acto central del marketing. Consiste en obtener de alguien un objeto deseado ofreciéndole algo a cambio (proceso de compra-venta).</p>
+                <p><strong>Mercado:</strong> El conjunto de todos los compradores (reales y potenciales) de un producto o servicio. Es el lugar, real o virtual, donde se realiza la transacción.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tipos-mercado">
+        <h2>2. Tipos de Mercados de Clientes Clave</h2>
+        <div class="grid-concepts">
+            <div class="card">
+                <h3>B2B (Business to Business)</h3>
+                <p>Intercambio entre empresas. Por ejemplo: una empresa que vende materias primas a otra para la producción de bienes finales.</p>
+            </div>
+            <div class="card">
+                <h3>B2C (Business to Consumer)</h3>
+                <p>Transacción entre la empresa y el consumidor final. Es el tipo de mercado más común y de consumo masivo.</p>
+            </div>
+            <div class="card">
+                <h3>B2G (Business to Government)</h3>
+                <p>Transacciones entre una empresa y organismos o entes del gobierno, generalmente a través de licitaciones públicas.</p>
+            </div>
+            <div class="card">
+                <h3>B2E (Business to Employee)</h3>
+                <p>Venta de productos o servicios de la empresa a sus propios empleados (ej. beneficios, descuentos internos, seguros). Se enfoca en la retención del talento.</p>
+            </div>
+            <div class="card">
+                <h3>C2C (Consumer to Consumer)</h3>
+                <p>Intercambio entre clientes sin intermediación directa de una empresa, facilitado por plataformas (ej. Marketplace de Facebook, Mercado Libre, etc.).</p>
             </div>
         </div>
     </section>
 
     <section id="estrategia">
-        <h2>2. Marketing Estratégico vs. Operativo</h2>
-        <p>Ambas funciones son esenciales y complementarias. Sin un buen análisis estratégico, el operativo no es rentable.</p>
+        <h2>3. Marketing Estratégico vs. Marketing Operativo</h2>
+        <div class="grid-concepts">
+            <div class="card" style="border-top-color: #FF6F00;">
+                <h3>Marketing Estratégico (Orientación al Análisis)</h3>
+                <p>Busca entender las **necesidades y deseos** del mercado para definir la propuesta de valor y posicionamiento. Se orienta al mercado.</p>
+                <ul>
+                    <li><strong>Enfoque:</strong> Análisis de oportunidades.</li>
+                    <li><strong>Horizonte:</strong> Mediano a largo plazo.</li>
+                    <li><strong>Objetivo:</strong> Generar nuevas estrategias y ventajas competitivas sostenibles.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top-color: #1A237E;">
+                <h3>Marketing Operativo (Orientación a la Acción)</h3>
+                <p>Es la ejecución de las decisiones estratégicas. Utiliza el Marketing Mix para alcanzar los objetivos de ventas y cuota de mercado.</p>
+                <ul>
+                    <li><strong>Enfoque:</strong> Concreción táctica.</li>
+                    <li><strong>Horizonte:</strong> Corto a mediano plazo.</li>
+                    <li><strong>Herramienta Clave:</strong> Las 4 P's.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="entornos">
+        <h2>4. Análisis Estratégico del Entorno</h2>
+        <div class="grid-concepts">
+            <div class="card">
+                <h3>Análisis Interno (Cadena de Valor)</h3>
+                <p>Se enfoca en las <strong>distintas áreas de la empresa</strong> y sus actividades. La Cadena de Valor (Porter) permite identificar las fuentes de ventaja competitiva y dónde se añade valor, dividiendo las actividades en Primarias y de Soporte.</p>
+            </div>
+            <div class="card">
+                <h3>Microentorno (Controlable)</h3>
+                <p>Actores cercanos que afectan directamente la capacidad de la empresa para servir a sus clientes:</p>
+                <ul>
+                    <li>Proveedores</li>
+                    <li>Clientes</li>
+                    <li>Competidores</li>
+                    <li>Intermediarios y Públicos.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Macroentorno (No Controlable)</h3>
+                <p>Fuerzas sociales mayores que afectan a todo el microentorno (PESTAL/PESTLE). No son controlables por la empresa, pero se deben monitorear:</p>
+                <ul>
+                    <li>Económicos</li>
+                    <li>Sociales/Culturales</li>
+                    <li>Tecnológicos</li>
+                    <li>Políticos/Legales</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Análisis FODA y 5 Fuerzas de Porter</h3>
+                <p><strong>FODA:</strong> Herramienta que abarca ambos análisis (Interno: Fortalezas/Debilidades; Externo: Oportunidades/Amenazas). Es clave para **generar nuevas estrategias**.</p>
+                <p><strong>5 Fuerzas de Porter:</strong> Se utiliza para el Análisis Externo, determinando la intensidad competitiva y la rentabilidad de una industria.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mix">
+        <h2>5. El Marketing Mix: Del Producto al Cliente (4P vs 4C)</h2>
+        <p>El modelo 4C es una evolución del tradicional 4P, enfocando la perspectiva desde la empresa hacia el consumidor.</p>
         <br>
         <div class="grid-concepts">
-            <div class="card" style="border-top-color: #2a9d8f;">
-                <h3>Marketing Estratégico (La Mente)</h3>
+            <div class="card" style="border-top-color: #FF6F00;">
+                <h3>4P (Orientación al Producto)</h3>
                 <ul>
-                    <li>Orientado al <strong>análisis</strong>.</li>
-                    <li>Mediano a largo plazo.</li>
-                    <li>Busca nuevas oportunidades.</li>
-                    <li>Define el mercado meta y propuesta de valor.</li>
+                    <li><strong>Producto:</strong> Lo que la empresa ofrece.</li>
+                    <li><strong>Precio:</strong> Cuánto cuesta a la empresa.</li>
+                    <li><strong>Plaza (Distribución):</strong> Dónde se vende el producto.</li>
+                    <li><strong>Promoción (Comunicación):</strong> Cómo se informa al cliente.</li>
                 </ul>
             </div>
-            <div class="card" style="border-top-color: #e76f51;">
-                <h3>Marketing Operativo (El Brazo)</h3>
+            <div class="card" style="border-top-color: #1A237E;">
+                <h3>4C (Orientación al Cliente)</h3>
                 <ul>
-                    <li>Orientado a la <strong>acción</strong>.</li>
-                    <li>Corto a mediano plazo.</li>
-                    <li>Usa las <strong>4 P's</strong> (Producto, Precio, Plaza, Promoción).</li>
-                    <li>Concreta la venta y los objetivos tácticos.</li>
+                    <li><strong>Solución para el Cliente:</strong> El valor que el producto aporta al consumidor (sustituye a Producto).</li>
+                    <li><strong>Costo para el Cliente:</strong> Costo total de adquisición, no solo monetario (sustituye a Precio).</li>
+                    <li><strong>Conveniencia:</strong> Facilidad de compra y accesibilidad para el cliente (sustituye a Plaza).</li>
+                    <li><strong>Comunicación:</strong> Diálogo bidireccional entre empresa y cliente (sustituye a Promoción).</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="consumidor">
-        <h2>3. Proceso de Decisión del Consumidor</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Mapa del proceso de compra según Kotler:</p>
+    <section id="compra">
+        <h2>6. Proceso de Decisión de Compra</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Las 5 etapas que recorre el consumidor desde el estímulo inicial hasta la evaluación final.</p>
         
-        <div class="mind-map-container">
-            <div class="mm-node">INICIO: Estímulo (Interno/Externo)</div>
-            <div style="font-size: 2rem;">⬇</div>
-            
-            <div class="mm-branches">
-                <div class="mm-leaf">1. Reconocimiento de la Necesidad</div>
-                <div class="mm-leaf">2. Búsqueda de Información</div>
-                <div class="mm-leaf">3. Evaluación de Alternativas</div>
-                <div class="mm-leaf">4. Decisión de Compra</div>
-                <div class="mm-leaf">5. Comportamiento Post-Compra</div>
-            </div>
-            
-            <div class="card" style="margin-top: 20px; max-width: 800px;">
-                <h3>Factor Clave: Segmentación</h3>
-                <p>Para entender al consumidor, dividimos el mercado usando variables:</p>
-                <ul>
-                    <li><strong>Geográficas:</strong> País, región, clima.</li>
-                    <li><strong>Demográficas:</strong> Edad, género, ingresos (GSE).</li>
-                    <li><strong>Psicográficas:</strong> Estilo de vida, clase social.</li>
-                    <li><strong>Conductuales:</strong> Conocimiento, actitudes, usos del producto.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="herramientas">
-        <h2>4. Herramientas de Análisis</h2>
         <div class="grid-concepts">
             <div class="card">
-                <h3>Matriz BCG</h3>
-                <p>Clasifica las Unidades Estratégicas de Negocio (UEN) según Crecimiento vs. Participación.</p>
-                <ul>
-                    <li>⭐ <strong>Estrella:</strong> Alta participación, alto crecimiento. Requieren inversión.</li>
-                    <li>🐄 <strong>Vaca Lechera:</strong> Alta participación, bajo crecimiento. Generan efectivo.</li>
-                    <li>❓ <strong>Interrogante:</strong> Baja participación, alto crecimiento. ¿Invertir o no?</li>
-                    <li>🐕 <strong>Perro:</strong> Baja participación, bajo crecimiento. Evaluar salida.</li>
-                </ul>
+                <h3>1. Reconocimiento de la Necesidad</h3>
+                <p>El comprador percibe una diferencia entre su estado actual y su estado deseado.</p>
             </div>
             <div class="card">
-                <h3>Cadena de Valor</h3>
-                <p>Divide la empresa en actividades para identificar fuentes de ventaja competitiva.</p>
-                <ul>
-                    <li><strong>Primarias:</strong> Logística in/out, Operaciones, Mkt y Ventas, Servicios.</li>
-                    <li><strong>Soporte:</strong> Infraestructura, RRHH, Tecnología, Compras.</li>
-                </ul>
+                <h3>2. Búsqueda de Información</h3>
+                <p>El comprador investiga fuentes internas (memoria) y externas (amigos, internet, publicidad).</p>
             </div>
             <div class="card">
-                <h3>Ventajas Competitivas (Porter)</h3>
-                <p>Estrategias genéricas para superar a la competencia:</p>
-                <ul>
-                    <li><strong>Liderazgo en Costos:</strong> Ser el productor de menor costo (ej. Walmart/Lider).</li>
-                    <li><strong>Diferenciación:</strong> Ser único en algo valorado por el cliente (ej. Apple).</li>
-                    <li><strong>Enfoque:</strong> Atender a un nicho específico (ej. Pinturas para barcos).</li>
-                </ul>
+                <h3>3. Evaluación de Alternativas</h3>
+                <p>El consumidor compara las marcas y productos disponibles según atributos (precio, calidad, prestigio).</p>
+            </div>
+            <div class="card">
+                <h3>4. Decisión de Compra</h3>
+                <p>El consumidor elige la marca que prefiere, aunque factores situacionales pueden alterar esta decisión.</p>
+            </div>
+            <div class="card" style="grid-column: span 2; text-align: center;">
+                <h3>5. Comportamiento Post Venta (Clave para la Fidelización)</h3>
+                <p>El consumidor evalúa la satisfacción/insatisfacción. Si la satisfacción es alta, se logra la **fidelización del cliente**, lo que reduce el costo de adquisición futuro.</p>
             </div>
         </div>
     </section>
@@ -389,12 +340,70 @@
             <div class="flashcard" onclick="this.classList.toggle('flipped')">
                 <div class="flashcard-inner">
                     <div class="flashcard-front">
-                        <h3>¿Qué son las 4 P's?</h3>
-                        <p>(Marketing Mix)</p>
+                        <h3>¿Cuál es el equivalente de "Precio" en el modelo 4C?</h3>
                     </div>
                     <div class="flashcard-back">
                         <h3>Respuesta:</h3>
-                        <p>Producto, Precio, Plaza (Distribución) y Promoción (Comunicación).</p>
+                        <p><strong>Costo para el Cliente.</strong> Se refiere al costo total de la adquisición (monetario, tiempo, esfuerzo, etc.).</p>
                     </div>
                 </div>
             </div>
+
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h3>¿Qué tipo de análisis abarca el FODA?</h3>
+                    </div>
+                    <div class="flashcard-back">
+                        <h3>Respuesta:</h3>
+                        <p><strong>Análisis Interno</strong> (Fortalezas y Debilidades) y <strong>Análisis Externo</strong> (Oportunidades y Amenazas).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h3>¿Qué caracteriza al Macroentorno?</h3>
+                    </div>
+                    <div class="flashcard-back">
+                        <h3>Respuesta:</h3>
+                        <p>Fuerzas sociales mayores (Económicas, Tecnológicas, etc.) que <strong>no son controlables</strong> por la empresa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h3>¿Cuál es el principal objetivo del Marketing Operativo?</h3>
+                    </div>
+                    <div class="flashcard-back">
+                        <h3>Respuesta:</h3>
+                        <p>La <strong>Acción</strong>. Ejecutar las decisiones estratégicas usando las tácticas del Marketing Mix (4P/4C).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Guía de Marketing Estratégico. Material didáctico basado en clases AIEP.</p>
+</footer>
+
+<script>
+    // Script para el scroll suave de la navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
