@@ -3,407 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing Estratégico - Web App Educativa</title>
+    <title>Resumen Ejecutivo: Taller de Marketing Estratégico y Operativo</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Paleta de Colores y Variables (Actualizada) */
-        :root {
-            --primary: #1A237E; /* Deep Indigo Blue */
-            --accent: #FF6F00;  /* Vibrant Orange */
-            --light: #F5F5F5;   /* Fondo claro */
-            --dark: #212121;    /* Texto principal */
-            --card-bg: #FFFFFF;
-            --shadow: 0 6px 15px rgba(0,0,0,0.15); /* Sombra mejorada */
-        }
-
-        * {
-            box-sizing: border-box;
+        /* CSS Básico - Se recomienda mover a styles.css para producción */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Solución para desborde en palabras muy largas */
-            word-wrap: break-word; 
+            background-color: #f4f7f6;
+            color: #333;
         }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        /* Header */
         header {
-            background: var(--primary);
+            background-color: #007bff;
             color: white;
-            padding: 2rem;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 6px solid var(--accent);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
         }
-
-        header p {
-            font-size: 1.4rem;
-            opacity: 0.9;
+        h1, h2, h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #e1e1e1;
+            padding-bottom: 5px;
+            margin-top: 30px;
         }
-
-        /* Navigation */
-        nav {
-            background: var(--dark);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+        h2 { border-color: #007bff; }
+        h3 { border-color: #cccccc; }
+        p strong {
+            color: #d9534f; /* Color para destacar conceptos */
         }
-
-        nav a {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
             color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: background 0.3s, transform 0.2s;
             font-weight: bold;
         }
-
-        nav a:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
-
-        /* Container */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 2rem;
+        blockquote {
+            background-color: #e6f0ff;
+            border-left: 5px solid #007bff;
+            margin: 20px 0;
+            padding: 15px 20px;
+            font-style: italic;
+            color: #004085;
         }
-
-        /* Section Styling */
-        section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 80px; /* Ajuste para el sticky nav */
-        }
-
-        h2 {
-            color: var(--primary);
-            border-left: 6px solid var(--accent);
-            padding-left: 1.2rem;
-            margin-bottom: 1.5rem;
-            font-size: 2.2rem;
-        }
-
-        /* Grid Layout for Concepts (Optimized for Card Content) */
-        .grid-concepts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 1.8rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--primary);
-            min-height: 180px; /* Asegura un tamaño mínimo */
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        /* Mapas Mentales y Flashcards (Misceláneo) */
-        .mind-map-container, .flashcard-container {
-            /* estilos de contenedor */
-        }
-        
-        /* Estilos de Flashcards */
-        .flashcard-front {
-            background-color: var(--primary);
-        }
-        .flashcard-back {
-            background-color: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Responsive Tweaks */
+        /* Responsividad Básica */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            nav { justify-content: space-around; }
-            .grid-concepts { grid-template-columns: 1fr; }
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid #ccc; }
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label);
+                font-weight: bold;
+                text-align: left;
+                color: #0056b3;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Marketing Estratégico y Operativo</h1>
+        <p>Documento Informativo: Taller de Marketing</p>
+    </header>
 
-<header>
-    <h1>Marketing Estratégico: Conceptos Fundamentales</h1>
-    <p>Guía de estudio basada en material docente AIEP</p>
-</header>
-
-<nav>
-    <a href="#fundamentos">Fundamentos</a>
-    <a href="#estrategia">Mkt Estratégico vs Operativo</a>
-    <a href="#entornos">Análisis del Entorno</a>
-    <a href="#mix">4P vs 4C</a>
-    <a href="#compra">Decisión de Compra</a>
-    <a href="#flashcards">¡Ponte a Prueba!</a>
-</nav>
-
-<div class="container">
-
-    <section id="fundamentos">
-        <h2>1. Fundamentos Clave y Conceptos Centrales</h2>
-        <div class="grid-concepts">
-            <div class="card">
-                <h3>Necesidades, Deseos y Demandas</h3>
-                <ul>
-                    <li><strong>Necesidad:</strong> Estado de carencia percibida, son infinitas y representan un vacío fundamental (ej. alimentación, seguridad).</li>
-                    <li><strong>Deseo:</strong> El impulso que genera la necesidad, es querer algo específico que no necesariamente se necesita. Están moldeados por la cultura y la personalidad.</li>
-                    <li><strong>Demanda:</strong> Ocurre cuando el deseo está respaldado por el **poder de compra** (dinero). Es la cantidad de un bien que el consumidor está dispuesto a adquirir.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Intercambio y Mercados</h3>
-                <p><strong>Intercambio:</strong> Es el acto central del marketing. Consiste en obtener de alguien un objeto deseado ofreciéndole algo a cambio (proceso de compra-venta).</p>
-                <p><strong>Mercado:</strong> El conjunto de todos los compradores (reales y potenciales) de un producto o servicio. Es el lugar, real o virtual, donde se realiza la transacción.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="tipos-mercado">
-        <h2>2. Tipos de Mercados de Clientes Clave</h2>
-        <div class="grid-concepts">
-            <div class="card">
-                <h3>B2B (Business to Business)</h3>
-                <p>Intercambio entre empresas. Por ejemplo: una empresa que vende materias primas a otra para la producción de bienes finales.</p>
-            </div>
-            <div class="card">
-                <h3>B2C (Business to Consumer)</h3>
-                <p>Transacción entre la empresa y el consumidor final. Es el tipo de mercado más común y de consumo masivo.</p>
-            </div>
-            <div class="card">
-                <h3>B2G (Business to Government)</h3>
-                <p>Transacciones entre una empresa y organismos o entes del gobierno, generalmente a través de licitaciones públicas.</p>
-            </div>
-            <div class="card">
-                <h3>B2E (Business to Employee)</h3>
-                <p>Venta de productos o servicios de la empresa a sus propios empleados (ej. beneficios, descuentos internos, seguros). Se enfoca en la retención del talento.</p>
-            </div>
-            <div class="card">
-                <h3>C2C (Consumer to Consumer)</h3>
-                <p>Intercambio entre clientes sin intermediación directa de una empresa, facilitado por plataformas (ej. Marketplace de Facebook, Mercado Libre, etc.).</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="estrategia">
-        <h2>3. Marketing Estratégico vs. Marketing Operativo</h2>
-        <div class="grid-concepts">
-            <div class="card" style="border-top-color: #FF6F00;">
-                <h3>Marketing Estratégico (Orientación al Análisis)</h3>
-                <p>Busca entender las **necesidades y deseos** del mercado para definir la propuesta de valor y posicionamiento. Se orienta al mercado.</p>
-                <ul>
-                    <li><strong>Enfoque:</strong> Análisis de oportunidades.</li>
-                    <li><strong>Horizonte:</strong> Mediano a largo plazo.</li>
-                    <li><strong>Objetivo:</strong> Generar nuevas estrategias y ventajas competitivas sostenibles.</li>
-                </ul>
-            </div>
-            <div class="card" style="border-top-color: #1A237E;">
-                <h3>Marketing Operativo (Orientación a la Acción)</h3>
-                <p>Es la ejecución de las decisiones estratégicas. Utiliza el Marketing Mix para alcanzar los objetivos de ventas y cuota de mercado.</p>
-                <ul>
-                    <li><strong>Enfoque:</strong> Concreción táctica.</li>
-                    <li><strong>Horizonte:</strong> Corto a mediano plazo.</li>
-                    <li><strong>Herramienta Clave:</strong> Las 4 P's.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <section id="entornos">
-        <h2>4. Análisis Estratégico del Entorno</h2>
-        <div class="grid-concepts">
-            <div class="card">
-                <h3>Análisis Interno (Cadena de Valor)</h3>
-                <p>Se enfoca en las <strong>distintas áreas de la empresa</strong> y sus actividades. La Cadena de Valor (Porter) permite identificar las fuentes de ventaja competitiva y dónde se añade valor, dividiendo las actividades en Primarias y de Soporte.</p>
-            </div>
-            <div class="card">
-                <h3>Microentorno (Controlable)</h3>
-                <p>Actores cercanos que afectan directamente la capacidad de la empresa para servir a sus clientes:</p>
-                <ul>
-                    <li>Proveedores</li>
-                    <li>Clientes</li>
-                    <li>Competidores</li>
-                    <li>Intermediarios y Públicos.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Macroentorno (No Controlable)</h3>
-                <p>Fuerzas sociales mayores que afectan a todo el microentorno (PESTAL/PESTLE). No son controlables por la empresa, pero se deben monitorear:</p>
-                <ul>
-                    <li>Económicos</li>
-                    <li>Sociales/Culturales</li>
-                    <li>Tecnológicos</li>
-                    <li>Políticos/Legales</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Análisis FODA y 5 Fuerzas de Porter</h3>
-                <p><strong>FODA:</strong> Herramienta que abarca ambos análisis (Interno: Fortalezas/Debilidades; Externo: Oportunidades/Amenazas). Es clave para **generar nuevas estrategias**.</p>
-                <p><strong>5 Fuerzas de Porter:</strong> Se utiliza para el Análisis Externo, determinando la intensidad competitiva y la rentabilidad de una industria.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="mix">
-        <h2>5. El Marketing Mix: Del Producto al Cliente (4P vs 4C)</h2>
-        <p>El modelo 4C es una evolución del tradicional 4P, enfocando la perspectiva desde la empresa hacia el consumidor.</p>
-        <br>
-        <div class="grid-concepts">
-            <div class="card" style="border-top-color: #FF6F00;">
-                <h3>4P (Orientación al Producto)</h3>
-                <ul>
-                    <li><strong>Producto:</strong> Lo que la empresa ofrece.</li>
-                    <li><strong>Precio:</strong> Cuánto cuesta a la empresa.</li>
-                    <li><strong>Plaza (Distribución):</strong> Dónde se vende el producto.</li>
-                    <li><strong>Promoción (Comunicación):</strong> Cómo se informa al cliente.</li>
-                </ul>
-            </div>
-            <div class="card" style="border-top-color: #1A237E;">
-                <h3>4C (Orientación al Cliente)</h3>
-                <ul>
-                    <li><strong>Solución para el Cliente:</strong> El valor que el producto aporta al consumidor (sustituye a Producto).</li>
-                    <li><strong>Costo para el Cliente:</strong> Costo total de adquisición, no solo monetario (sustituye a Precio).</li>
-                    <li><strong>Conveniencia:</strong> Facilidad de compra y accesibilidad para el cliente (sustituye a Plaza).</li>
-                    <li><strong>Comunicación:</strong> Diálogo bidireccional entre empresa y cliente (sustituye a Promoción).</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="compra">
-        <h2>6. Proceso de Decisión de Compra</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Las 5 etapas que recorre el consumidor desde el estímulo inicial hasta la evaluación final.</p>
+    <div class="container">
         
-        <div class="grid-concepts">
-            <div class="card">
-                <h3>1. Reconocimiento de la Necesidad</h3>
-                <p>El comprador percibe una diferencia entre su estado actual y su estado deseado.</p>
-            </div>
-            <div class="card">
-                <h3>2. Búsqueda de Información</h3>
-                <p>El comprador investiga fuentes internas (memoria) y externas (amigos, internet, publicidad).</p>
-            </div>
-            <div class="card">
-                <h3>3. Evaluación de Alternativas</h3>
-                <p>El consumidor compara las marcas y productos disponibles según atributos (precio, calidad, prestigio).</p>
-            </div>
-            <div class="card">
-                <h3>4. Decisión de Compra</h3>
-                <p>El consumidor elige la marca que prefiere, aunque factores situacionales pueden alterar esta decisión.</p>
-            </div>
-            <div class="card" style="grid-column: span 2; text-align: center;">
-                <h3>5. Comportamiento Post Venta (Clave para la Fidelización)</h3>
-                <p>El consumidor evalúa la satisfacción/insatisfacción. Si la satisfacción es alta, se logra la **fidelización del cliente**, lo que reduce el costo de adquisición futuro.</p>
-            </div>
-        </div>
-    </section>
+        <h2>Resumen Ejecutivo</h2>
+        <p>Este documento sintetiza los conceptos fundamentales del marketing estratégico y operativo, basándose en un análisis exhaustivo de los materiales de un taller de marketing.</p>
+        <p>El marketing se define no solo como publicidad y ventas, sino como un proceso integral para **crear valor para los clientes** y establecer relaciones sólidas, con el objetivo final de satisfacer necesidades de manera tan efectiva que la venta se vuelva superflua.</p>
+        <p>La evolución del marketing ha llevado a una **orientación al mercado**, donde la creación de valor para el cliente es responsabilidad de toda la organización.</p>
+        <p>Los conceptos centrales del marketing se sustentan en las **necesidades, deseos y demandas** del consumidor.</p>
+        <p>El proceso se divide en dos dimensiones clave: el **marketing estratégico**, enfocado en el análisis a mediano y largo plazo para identificar nuevas oportunidades en un entorno dinámico, y el **marketing operativo**, orientado a la acción a corto plazo en mercados existentes.</p>
+        <p>Una gestión exitosa requiere la comprensión profunda del entorno de la empresa, incluyendo el **macroentorno** (fuerzas económicas, socioculturales, políticas, tecnológicas) y el **microentorno** (proveedores, competencia, clientes), así como las fuerzas internas controlables.</p>
+        <p>Las estrategias de marketing impulsadas por el cliente se basan en la **segmentación** del mercado (geográfica, demográfica, psicográfica, conductual) y la selección de un **mercado meta**.</p>
+        <p>Comprender el **proceso de decisión de compra del consumidor**, que consta de cinco etapas, es crucial para diseñar campañas efectivas.</p>
+        <p>Finalmente, la formulación de estrategias competitivas se apoya en herramientas como la **Cadena de Valor** para identificar ventajas competitivas, las **Estrategias Genéricas de Porter** (liderazgo en costos, diferenciación y enfoque) para posicionarse en el mercado, y la **Matriz BCG** para gestionar la cartera de Unidades Estratégicas de Negocios (UEN) de la empresa.</p>
 
-    <section id="flashcards">
-        <h2>⚡ Pon a prueba tu conocimiento</h2>
-        <p class="instruction">Haz clic en las tarjetas para ver la respuesta</p>
+        <hr>
+
+        <h2>1. Definición, Rol y Evolución del Marketing</h2>
+
+        <h3>1.1. Concepto Fundamental de Marketing</h3>
+        <p>Contrario a la percepción común que lo asocia exclusivamente con la publicidad y las ventas, el marketing es un concepto mucho más amplio. Estas actividades son solo una parte visible de un proceso más profundo.</p>
+        <p>Las definiciones clave proporcionadas por expertos y organizaciones establecen una base integral:</p>
+        <ul>
+            <li><strong>American Marketing Association (AMA, 2017):</strong> "El marketing es la actividad, el conjunto de instituciones y los procesos para crear, comunicar, entregar e intercambiar ofertas que tienen valor para los clientes, los socios y la sociedad en general".</li>
+            <li><strong>Philip Kotler (2012):</strong> "El marketing es el proceso mediante el cual las compañías crean valor para los clientes y establecen relaciones sólidas para obtener a cambio valor de ellos".</li>
+            <li><strong>Daniel López Alfaro:</strong> "El marketing es identificar y satisfacer las necesidades humanas y sociales, de manera rentable a través de un proceso de intercambio".</li>
+        </ul>
+        <blockquote>
+            <p>El propósito último del marketing, según el gurú de la administración **Peter Drucker**, "consiste en lograr que las ventas sean innecesarias", ya que su función es entender y satisfacer tan bien las necesidades del cliente que el producto se venda por sí solo.</p>
+        </blockquote>
+
+        <h3>1.2. Evolución de la Orientación Empresarial</h3>
+        <p>La función del marketing dentro de las empresas ha evolucionado significativamente, impulsada por la globalización y los cambios tecnológicos. Esta evolución se puede clasificar según la orientación de la empresa, la cual está directamente relacionada con la intensidad de la competencia y la madurez del mercado (la relación entre oferta y demanda).</p>
+
+        <h4>Tabla: Evolución de la Orientación Empresarial</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Orientación</th>
+                    <th>Relación Oferta-Demanda</th>
+                    <th>Perspectiva</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Orientación">Al Producto</td>
+                    <td data-label="Relación Oferta-Demanda">Demanda &gt; Oferta</td>
+                    <td data-label="Perspectiva">Adentro - Adentro</td>
+                    <td data-label="Descripción">"El enfoque principal está en la producción y la eficiencia interna, asumiendo que un buen producto se venderá solo."</td>
+                </tr>
+                <tr>
+                    <td data-label="Orientación">A las Ventas</td>
+                    <td data-label="Relación Oferta-Demanda">Demanda = Oferta</td>
+                    <td data-label="Perspectiva">Adentro - Afuera</td>
+                    <td data-label="Descripción">La competencia aumenta y el foco se traslada a la promoción y venta agresiva para persuadir a los clientes.</td>
+                </tr>
+                <tr>
+                    <td data-label="Orientación">Al Cliente</td>
+                    <td data-label="Relación Oferta-Demanda">Demanda = Oferta</td>
+                    <td data-label="Perspectiva">Afuera - Adentro</td>
+                    <td data-label="Descripción">La empresa comienza a enfocarse en las necesidades y deseos de los clientes para guiar sus decisiones de producto y servicio.</td>
+                </tr>
+                <tr>
+                    <td data-label="Orientación">Al Mercado</td>
+                    <td data-label="Relación Oferta-Demanda">Oferta &gt; Demanda</td>
+                    <td data-label="Perspectiva">Global</td>
+                    <td data-label="Descripción">"La responsabilidad de crear valor para el cliente se extiende a todos los departamentos de la organización, no solo al de marketing."</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>La **orientación al mercado** es el enfoque contemporáneo, donde se desalientan los roles funcionales aislados y se establece que el desarrollo de relaciones con los clientes es una responsabilidad de toda la organización.</p>
+
+        <hr>
+
+        <h2>2. Conceptos Fundamentales del Marketing</h2>
+        <p>El marketing se sustenta en cinco conceptos interrelacionados que explican la dinámica entre las empresas y los consumidores.</p>
+        <ul>
+            <li>**Necesidades:** Son estados de carencia percibida. Philip Kotler subraya que este es el concepto principal del marketing. La teoría de la motivación de Abraham Maslow (1943) clasifica estas necesidades en una jerarquía de cinco niveles.</li>
+            <li>**Deseos:** Son la forma que adoptan las necesidades humanas, moldeadas por la cultura y la personalidad individual.</li>
+            <li>**Demandas:** Cuando los deseos están respaldados por el poder de compra, se convierten en demandas. Los consumidores demandan productos que ofrecen el mayor valor y satisfacción según sus recursos.</li>
+            <li>**Intercambio:** El marketing ocurre cuando las personas deciden satisfacer sus necesidades y deseos a través de un intercambio.</li>
+            <li>**Mercado e Industria:** Estos conceptos llevan a la definición de **mercado** como el conjunto de todos los compradores de un producto o servicio, y de **industria** como el conjunto de todas las empresas oferentes.</li>
+        </ul>
+
+        <h3>2.1. Clasificación de Mercados de Clientes Claves</h3>
+        <p>Los mercados se pueden clasificar según el tipo de proceso de intercambio que realizan las empresas. Los principales mercados son:</p>
+        <ul>
+            <li>**Business to Consumer (B2C):** Intercambio entre la empresa y el consumidor final (individuos o familias).</li>
+            <li>**Business to Business (B2B):** Intercambio donde ambas partes son empresas u organizaciones.</li>
+            <li>**Business to Government (B2G):** Intercambio entre una empresa y el gobierno.</li>
+            <li>**Business to Employee (B2E):** Intercambio entre una empresa y sus propios empleados.</li>
+            <li>**Consumer to Consumer (C2C):** Intercambio donde ambas partes son clientes.</li>
+        </ul>
+        <p>Las empresas a menudo operan en una combinación de estos mercados.</p>
+
+        <hr>
+
+        <h2>3. Marketing Estratégico y Marketing Operativo</h2>
+        <p>La orientación al mercado exige que el proceso de marketing adopte una doble faceta: una analítica y otra orientada a la acción.</p>
+
+        <h3>Marketing Estratégico</h3>
+        <p>Es un proceso orientado al **análisis de las necesidades** del mercado. Su función es seguir la evolución del mercado de referencia, identificar segmentos de producto existentes o potenciales, y evaluar el atractivo de estas oportunidades económicas a **mediano y largo plazo**. Un comprador no busca un producto, sino la solución que este le ofrece.</p>
+
+        <h3>Marketing Operativo</h3>
+        <p>Es un proceso orientado a la **acción**, con un horizonte de planificación de **corto a mediano plazo**. Se enfoca en alcanzar la participación de mercado objetivo a través de medios tácticos conocidos como la **mezcla de marketing** o las **"cuatro P"** (producto, plaza/distribución, precio y promoción). Es la parte más visible del marketing, pero no puede ser rentable sin un análisis estratégico exhaustivo. Ambas funciones están estrechamente relacionadas y deben diseñarse de forma coordinada.</p>
+
+        <h4>Tabla: Comparativa Marketing Estratégico vs. Operativo</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Marketing Estratégico</th>
+                    <th>Marketing Operativo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Característica">Orientación</td>
+                    <td data-label="Marketing Estratégico">Al análisis</td>
+                    <td data-label="Marketing Operativo">A la acción</td>
+                </tr>
+                <tr>
+                    <td data-label="Característica">Oportunidades</td>
+                    <td data-label="Marketing Estratégico">Nuevas oportunidades</td>
+                    <td data-label="Marketing Operativo">Oportunidades existentes</td>
+                </tr>
+                <tr>
+                    <td data-label="Característica">Entorno</td>
+                    <td data-label="Marketing Estratégico">Dinámico</td>
+                    <td data-label="Marketing Operativo">Estable</td>
+                </tr>
+                <tr>
+                    <td data-label="Característica">Comportamiento</td>
+                    <td data-label="Marketing Estratégico">Proactivo</td>
+                    <td data-label="Marketing Operativo">Reactivo</td>
+                </tr>
+                <tr>
+                    <td data-label="Característica">Gestión</td>
+                    <td data-label="Marketing Estratégico">De mayor alcance</td>
+                    <td data-label="Marketing Operativo">Del día a día</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>4. Análisis del Entorno de Marketing</h2>
+        <p>Toda organización debe analizar los actores y variables que pueden afectar su gestión. Estas fuerzas se dividen en externas e internas.</p>
+
+        <h3>4.1. Fuerzas Externas (No Controlables)</h3>
+        <p>Involucran factores que la organización generalmente no puede controlar. Se dividen en dos niveles:</p>
         
-        <div class="flashcard-container">
-            <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                <div class="flashcard-inner">
-                    <div class="flashcard-front">
-                        <h3>¿Cuál es el equivalente de "Precio" en el modelo 4C?</h3>
-                    </div>
-                    <div class="flashcard-back">
-                        <h3>Respuesta:</h3>
-                        <p><strong>Costo para el Cliente.</strong> Se refiere al costo total de la adquisición (monetario, tiempo, esfuerzo, etc.).</p>
-                    </div>
-                </div>
-            </div>
+        <h4>A. Macroentorno</h4>
+        <p>Afectan a la empresa en su conjunto. Fred R. Davis (2013) establece cuatro categorías principales:</p>
+        <ul>
+            <li>**Fuerzas Económicas:** Impactan directamente en el atractivo de las estrategias (ej. tasas de interés, inflación).</li>
+            <li>**Fuerzas Sociales, Culturales, Demográficas y Ambientales:** Cambios en gustos, preferencias y estructuras sociales que afectan a productos, servicios y mercados.</li>
+            <li>**Fuerzas Políticas, Gubernamentales y Legales:** Los gobiernos actúan como reguladores, clientes y subvencionadores, representando oportunidades o amenazas.</li>
+            <li>**Fuerzas Tecnológicas:** Avances que pueden afectar significativamente productos, servicios y mercados, creando oportunidades y amenazas.</li>
+        </ul>
 
-            <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                <div class="flashcard-inner">
-                    <div class="flashcard-front">
-                        <h3>¿Qué tipo de análisis abarca el FODA?</h3>
-                    </div>
-                    <div class="flashcard-back">
-                        <h3>Respuesta:</h3>
-                        <p><strong>Análisis Interno</strong> (Fortalezas y Debilidades) y <strong>Análisis Externo</strong> (Oportunidades y Amenazas).</p>
-                    </div>
-                </div>
-            </div>
+        <h4>B. Microentorno</h4>
+        <p>Actores cercanos a la empresa que afectan su capacidad para servir a los clientes.</p>
+        <ul>
+            <li>**Proveedores:** Los bienes y servicios que una empresa requiere son fundamentales para su éxito.</li>
+            <li>**Competencia:** El análisis de los productos, precios, distribución y promoción de los competidores es fundamental.</li>
+            <li>**Clientes:** Son el punto central de toda decisión de marketing. El objetivo es satisfacer sus necesidades.</li>
+        </ul>
 
-            <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                <div class="flashcard-inner">
-                    <div class="flashcard-front">
-                        <h3>¿Qué caracteriza al Macroentorno?</h3>
-                    </div>
-                    <div class="flashcard-back">
-                        <h3>Respuesta:</h3>
-                        <p>Fuerzas sociales mayores (Económicas, Tecnológicas, etc.) que <strong>no son controlables</strong> por la empresa.</p>
-                    </div>
-                </div>
-            </div>
+        <h3>4.2. Fuerzas Internas (Controlables)</h3>
+        <p>Corresponden al ambiente interno de la organización y afectan directamente las actividades de marketing. Incluyen las áreas funcionales de la empresa, como producción, finanzas, recursos humanos, etc., las cuales varían según el tipo de organización.</p>
 
-            <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                <div class="flashcard-inner">
-                    <div class="flashcard-front">
-                        <h3>¿Cuál es el principal objetivo del Marketing Operativo?</h3>
-                    </div>
-                    <div class="flashcard-back">
-                        <h3>Respuesta:</h3>
-                        <p>La <strong>Acción</strong>. Ejecutar las decisiones estratégicas usando las tácticas del Marketing Mix (4P/4C).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <hr>
 
-</div>
+        <h2>5. Segmentación de Mercados y Selección del Mercado Meta</h2>
+        <p>Una estrategia de marketing impulsada por el cliente implica dos pasos fundamentales:</p>
+        <ul>
+            <li>**Segmentación de Mercado:** Proceso de dividir un mercado en grupos más pequeños con distintas necesidades, características o comportamientos que podrían requerir estrategias de marketing distintas.</li>
+            <li>**Definición del Mercado Meta:** Proceso de evaluar el atractivo de cada segmento y elegir uno o más para intentar ingresar. Kotler lo define como el "conjunto de compradores que comparten necesidades o características comunes, a quienes la compañía decide atender".</li>
+        </ul>
 
-<footer>
-    <p>&copy; 2024 Guía de Marketing Estratégico. Material didáctico basado en clases AIEP.</p>
-</footer>
+        <h3>5.1. Variables de Segmentación de Mercados de Consumidores (B2C)</h3>
+        <p>Según Kotler, existen cuatro variables principales, y se recomienda utilizar una combinación de ellas:</p>
+        <ul>
+            <li>**Geográfica:** División del mercado en unidades geográficas como países, regiones, ciudades o zonas.</li>
+            <li>**Demográfica:** División según variables como edad, género, tamaño de la familia, ingreso, ocupación, escolaridad, religión, etc. Es la base más popular, ya que las necesidades suelen cambiar con estas variables.</li>
+            <li>**Psicográfica:** División según clase social (GSE en Chile), estilo de vida o características de personalidad. Personas del mismo grupo demográfico pueden tener perfiles psicográficos muy diferentes.</li>
+            <li>**Conductual:** División según conocimientos, actitudes, usos o respuestas a un producto. Muchos especialistas la consideran el mejor punto de partida.</li>
+        </ul>
 
-<script>
-    // Script para el scroll suave de la navegación
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
+        <h3>5.2. Variables de Segmentación de Mercados Industriales (B2B)</h3>
+        <p>Se pueden usar variables similares a las de los mercados de consumo, además de otras específicas:</p>
+        <ul>
+            <li>**Demográficas:** Sector industrial, tamaño de la empresa, ubicación.</li>
+            <li>**Operativas:** Tecnología, estatus de usuario, capacidades de los clientes.</li>
+            <li>**Enfoques de Compra:** Organización de la función de compra, estructura de poder, políticas de compra.</li>
+            <li>**Factores Situacionales:** Urgencia, aplicación específica, tamaño del pedido.</li>
+            <li>**Características Personales:** Similitud comprador-vendedor, actitud ante el riesgo, lealtad.</li>
+        </ul>
 
+        <hr>
+
+        <h2>6. Proceso de Toma de Decisión del Consumidor</h2>
+        <p>Comprender cómo los consumidores responden a las campañas de marketing es un foco central para los especialistas. Kotler sugiere un proceso de **cinco etapas** que los consumidores atraviesan en cada compra:</p>
+        
+        <ol>
+            <li>**Reconocimiento de Necesidades:** El proceso inicia cuando el comprador detecta un problema o necesidad, activado por **estímulos internos** (hambre, sed) o **estímulos externos** (una conversación, un anuncio).</li>
+            <li>**Búsqueda de Información:** Un consumidor interesado puede buscar más información de diversas fuentes:
+                <ul>
+                    <li>Fuentes personales: Familia, amigos, compañeros.</li>
+                    <li>Fuentes comerciales: Publicidad, vendedores, sitios web.</li>
+                    <li>Fuentes públicas: Medios de comunicación, búsquedas en internet.</li>
+                </ul>
+            </li>
+            <li>**Evaluación de Alternativas:** El consumidor procesa la información para llegar a una elección de marca. Este proceso varía según el individuo y la situación de compra. Se califican las alternativas y se determina una intención de compra.</li>
+            <li>**Decisión de Compra:** Generalmente, se adquiere la marca preferida. Sin embargo, dos factores pueden interponerse: las **actitudes de los demás** y **factores situacionales inesperados**.</li>
+            <li>**Comportamiento Posterior a la Compra:** El consumidor experimentará satisfacción o insatisfacción. Esto depende de la relación entre sus **expectativas** y el **desempeño percibido** del producto. El objetivo del marketing es exceder las expectativas para convertir al cliente en un "embajador" de la marca.</li>
+        </ol>
+
+        <hr>
+
+        <h2>7. Herramientas de Análisis para el Marketing Estratégico</h2>
+
+        <h3>7.1. La Cadena de Valor</h3>
+        <p>La cadena de valor, descrita por Lambin y Porter, es una herramienta para analizar cómo una empresa crea valor. Toda empresa es una serie de actividades que pueden dividirse en dos tipos, y el análisis de estas permite identificar las fuentes de ventaja competitiva.</p>
+
+        <h4>Actividades Primarias</h4>
+        <p>Implicadas en la creación física del producto, su venta y transferencia al consumidor.</p>
+        <ul>
+            <li>**Logística Interna:** Recepción, almacenamiento y diseminación de insumos.</li>
+            <li>**Operaciones:** Transformación de insumos en el producto final.</li>
+            <li>**Logística Externa:** Recopilación, almacenamiento y distribución del producto a los compradores.</li>
+            <li>**Marketing y Ventas:** Medios por los cuales los compradores pueden adquirir el producto.</li>
+            <li>**Servicio Post Venta:** Servicios para realzar o mantener el valor del producto (instalación, reparación).</li>
+        </ul>
+
+        <h4>Actividades de Soporte (o Secundarias)</h4>
+        <p>Sustentan a las actividades primarias.</p>
+        <ul>
+            <li>**Compras o Abastecimiento:** Función de comprar los insumos usados en la cadena de valor.</li>
+            <li>**Desarrollo de Tecnología:** Know-how, procedimientos y tecnología en cada actividad.</li>
+            <li>**Gestión de Recursos Humanos:** Búsqueda, contratación, entrenamiento y compensación del personal.</li>
+            <li>**Infraestructura de la Empresa:** Administración general, planeación, finanzas, asuntos legales.</li>
+        </ul>
+
+        <h3>7.2. Estrategias Genéricas de Michael Porter (1980)</h3>
+        <p>Las empresas pueden obtener una ventaja competitiva a través de tres ejes principales, que dan lugar a cuatro estrategias genéricas.</p>
+        
+        <ul>
+            <li>**Liderazgo en Costos:** El objetivo es lograr los costos de producción más bajos de la industria. Requiere una vigilancia minuciosa de los gastos, inversiones en productividad y minimización de costos en todas las áreas. Permite fijar precios más bajos y ganar participación de mercado.</li>
+            <li>**Diferenciación:** Consiste en otorgar cualidades distintivas al producto para que sea percibido como "único" por los compradores. La diferenciación puede basarse en diseño, empaque, tecnología o imagen de marca. Permite obtener mayores beneficios al justificar un precio más alto.</li>
+            <li>**Enfoque o Especialización:** Se concentra en atender a uno o pocos segmentos particulares del mercado. Esta estrategia puede tomar dos formas:
+                <ul>
+                    <li>**Enfoque en Costos:** Ser el productor de menor costo en un segmento específico.</li>
+                    <li>**Enfoque en Diferenciación:** Diferenciarse para satisfacer las necesidades de un segmento específico.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>7.3. Matriz de la Boston Consulting Group (BCG)</h3>
+        <p>Este método clasifica todas las **Unidades Estratégicas de Negocios (UEN)** de una empresa —que pueden ser una división, una línea de productos o una marca— para ayudar a decidir dónde invertir los recursos. La matriz utiliza dos ejes:</p>
+        <ul>
+            <li>**Eje Vertical:** Tasa de crecimiento de la industria (atractivo del sector).</li>
+            <li>**Eje Horizontal:** Participación relativa del mercado (posición de la empresa frente a su mayor competidor).</li>
+        </ul>
+
+        <p>La matriz define cuatro tipos de UEN:</p>
+
+        <h4>Tabla: Cuadrantes de la Matriz BCG</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cuadrante</th>
+                    <th>Participación de Mercado</th>
+                    <th>Crecimiento de la Industria</th>
+                    <th>Características y Estrategias</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Cuadrante">Estrellas</td>
+                    <td data-label="Participación de Mercado">Alta</td>
+                    <td data-label="Crecimiento de la Industria">Alto</td>
+                    <td data-label="Características y Estrategias">"Requieren fuertes inversiones para financiar su crecimiento. Con el tiempo, se convierten en Vacas Lecheras. **Estrategias:** Integración, penetración y desarrollo de mercado/producto."</td>
+                </tr>
+                <tr>
+                    <td data-label="Cuadrante">Vacas Lecheras</td>
+                    <td data-label="Participación de Mercado">Alta</td>
+                    <td data-label="Crecimiento de la Industria">Bajo</td>
+                    <td data-label="Características y Estrategias">"Generan gran cantidad de recursos económicos con baja inversión, financiando otras UEN. **Estrategias:** Desarrollo de producto, diversificación, recorte de gastos."</td>
+                </tr>
+                <tr>
+                    <td data-label="Cuadrante">Interrogantes</td>
+                    <td data-label="Participación de Mercado">Baja</td>
+                    <td data-label="Crecimiento de la Industria">Alto</td>
+                    <td data-label="Características y Estrategias">"Requieren muchos recursos para mantener o aumentar su participación. La decisión es si invertir para convertirlas en Estrellas o desinvertir. **Estrategias:** Penetración y desarrollo de mercado/producto, desinversión."</td>
+                </tr>
+                <tr>
+                    <td data-label="Cuadrante">Perros</td>
+                    <td data-label="Participación de Mercado">Baja</td>
+                    <td data-label="Crecimiento de la Industria">Bajo</td>
+                    <td data-label="Características y Estrategias">"Pueden mantenerse a sí mismas por un tiempo, pero no son una fuente de recursos y tienden a ser canceladas. **Estrategias:** Recorte de gastos, desinversión, liquidación."</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 </body>
 </html>
